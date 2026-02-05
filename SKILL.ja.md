@@ -150,12 +150,12 @@ system.beforeEvents.startup.subscribe((init: StartupEvent) => {
       permissionLevel: CommandPermissionLevel.GameDirectors,
       cheatsRequired: true,
       mandatoryParameters: [
-        { type: CustomCommandParamType.String, name: "msg" },
-        { type: CustomCommandParamType.Enum, name: "mode", enumName: "example:mode" },
+        {  type: CustomCommandParamType.String, name: "msg", },
+        {  type: CustomCommandParamType.Enum, name: "example:mode"},
       ],
       optionalParameters: [
         { type: CustomCommandParamType.Boolean, name: "silent" },
-        { type: CustomCommandParamType.Int, name: "count" },
+        { type: CustomCommandParamType.Integer, name: "count" },
       ],
     },
     (origin, args) => {
