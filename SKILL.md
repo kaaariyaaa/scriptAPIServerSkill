@@ -158,17 +158,17 @@ system.beforeEvents.startup.subscribe((init: StartupEvent) => {
         { type: CustomCommandParamType.Integer, name: "count" },
       ],
     },
-    (origin, args) => {
-      const msg = String(args[0] ?? "ok");
-      const mode = String(args[1] ?? "off");
-      const silent = Boolean(args[2] ?? false);
-      const count = Number(args[3] ?? 1);
+    (origin, msg, mode, silent, count) => {
+      const msgValue = String(msg ?? "ok");
+      const modeValue = String(mode ?? "off");
+      const silentValue = Boolean(silent ?? false);
+      const countValue = Number(count ?? 1);
 
       return {
         status: CustomCommandStatus.Success,
-        message: silent
+        message: silentValue
           ? undefined
-          : `[${origin.sourceType}] ${msg} mode=${mode} count=${count}`,
+          : `[${origin.sourceType}] ${msgValue} mode=${modeValue} count=${countValue}`,
       };
     }
   );
