@@ -26,6 +26,7 @@ Follow these steps to answer requests about the `@minecraft/server` module.
 - Include the minimal example needed to solve the task (TypeScript or JavaScript as requested).
 - Call out required imports, especially `world`, `system`, and types from `@minecraft/server`.
 - Mention important constants (e.g., `TicksPerSecond`, `TicksPerDay`) only when relevant.
+- Before defining new types/classes/helpers related to `@minecraft/server`, verify official equivalents via Microsoft Learn MCP; prefer official API types and keep helpers minimal.
 
 ## Common patterns
 
@@ -52,10 +53,13 @@ Follow these steps to answer requests about the `@minecraft/server` module.
   - `MinecraftItemTypes` for items
   - `MinecraftDimensionTypes` for dimensions
   - `MinecraftEffectTypes` for effects
-  - Other available enums: `potionEffect`, `potionDelivery`, `feature`, `enchantment`, `cooldownCategory`, `cameraPresets`, `biom`
+  - Other available enums: `potionEffect`, `potionDelivery`, `feature`, `enchantment`, `cooldownCategory`, `cameraPresets`, `biome`
 - **Custom command and scriptEvent IDs** must include a namespace prefix (e.g., `example:testCommand`):
   - The prefix is per addon; use one consistent prefix throughout the addon
   - Cannot mix multiple prefixes within a single addon
+
+### Code structure (avoid redundancy)
+- Avoid re-defining official `@minecraft/server` types (e.g., `Vector3`) unless docs confirm no equivalent exists.
 
 Example:
 

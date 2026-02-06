@@ -26,6 +26,7 @@ description: Minecraft Bedrock Script API の @minecraft/server モジュール�
 - タスクを解決するために必要な最小限のサンプルコード（要求に応じて TypeScript または JavaScript）を含めてください。
 - 必要なインポート、特に `@minecraft/server` からの `world`、`system`、および型について明記してください。
 - 関連する場合のみ、重要な定数（例：`TicksPerSecond`、`TicksPerDay`）について言及してください。
+- `@minecraft/server` 関連の新しい型/クラス/ヘルパーを定義する前に、Microsoft Learn MCP を介して公式の同等機能があるか確認してください。公式の API 型を優先し、ヘルパーは最小限に留めてください。
 
 ## 一般的なパターン
 
@@ -52,10 +53,13 @@ description: Minecraft Bedrock Script API の @minecraft/server モジュール�
   - アイテムには `MinecraftItemTypes`
   - ディメンションには `MinecraftDimensionTypes`
   - エフェクトには `MinecraftEffectTypes`
-  - その他の利用可能な列挙型：`potionEffect`, `potionDelivery`, `feature`, `enchantment`, `cooldownCategory`, `cameraPresets`, `biom`
+  - その他の利用可能な列挙型：`potionEffect`, `potionDelivery`, `feature`, `enchantment`, `cooldownCategory`, `cameraPresets`, `biome`
 - **カスタムコマンドと scriptEvent の ID** には名前空間プレフィックスを含める必要があります（例：`example:testCommand`）：
   - プレフィックスはアドオンごとに設定します。アドオン全体で一貫した1つのプレフィックスを使用してください
   - 1つのアドオン内で複数のプレフィックスを混在させることはできません
+
+### コード構造（冗長性の回避）
+- ドキュメントで同等のものが存在しないと確認できない限り、公式の `@minecraft/server` 型（例：`Vector3`）を再定義しないでください。
 
 例：
 
@@ -126,7 +130,7 @@ system.runInterval(() => {
 - `CustomCommand` インターフェースを使用してコマンドを定義します：`name`, `description`, `permissionLevel` に加え、`mandatoryParameters`（必須パラメータ）と `optionalParameters`（任意パラメータ）を指定します。
 - パラメータには `CustomCommandParameter` を使用し、`name` と `type` を指定します（`CustomCommandParamType` が `Enum` の場合は `enumName` も必要です）。
 - 列挙型（Enum）をパラメータで使用する前に、`CustomCommandRegistry.registerEnum(name, values)` で登録してください。
-- コマンドは `CustomCommandRegistry.registerCommand(customCommand, callback)` で登録します。コールバックは `CustomCommandOrigin` と `any[]` 型の引数を受け取り、`CustomCommandResult` を返します。
+- コマンドは `CustomCommandRegistry.registerCommand(customCommand, callback)` で登録します。コールバックは `CustomCommandOrigin` とそれに続くパラメータを引数として受け取り、`CustomCommandResult` を返します。
 - 関連ドキュメント：`CustomCommand`, `CustomCommandParameter`, `CustomCommandRegistry`, `CustomCommandOrigin`, `CustomCommandResult`, `CommandPermissionLevel`
 
 例：
