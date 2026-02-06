@@ -103,6 +103,7 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
 - Register enums: `CustomCommandRegistry.registerEnum(name, values)`.
 - Register cmd: `CustomCommandRegistry.registerCommand(customCommand, callback)`.
 - Callback: `(origin, ...args) => CustomCommandResult`.
+- Custom command callbacks run with restricted-execution privileges, so do not call read-only-restricted methods directly; defer with `system.run` if needed.
 - When using an arrow function, align parameter names and order with the `CustomCommandParameter.name` list; avoid mismatched names or generic `args` when parameters are defined.
 
 Example:

@@ -103,6 +103,7 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
 - Enum 登録：`CustomCommandRegistry.registerEnum(name, values)`。
 - コマンド登録：`CustomCommandRegistry.registerCommand(customCommand, callback)`。
 - コールバック：`(origin, ...args) => CustomCommandResult`。
+- カスタムコマンドコールバックは制限付き実行権限で実行されるため、読み取り専用制限付きメソッドを直接呼び出さないでください。必要な場合は`system.run`で遅延実行してください。
 - アロー関数を使用する際は、パラメータ名と順序を `CustomCommandParameter.name` リストに合わせてください。パラメータが定義されている場合、名前の不一致や汎用的な `args` の使用は避けてください。
 
 例：
