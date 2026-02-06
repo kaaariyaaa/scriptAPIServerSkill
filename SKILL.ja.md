@@ -45,6 +45,7 @@ system.runInterval(() => {
     }
   }
 });
+```
 
 ## 権限モード
 
@@ -158,7 +159,7 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
 ## system.run のバリエーション
 
 - `run`：次のティック。
-- `runTimeout(cb, ticks)`：N ティック遅延。`0` は無限ループの可能性。
+- `runTimeout(cb, ticks)`：N ティック遅延。`0` は誤用するとタイトループを引き起こす可能性。
 - `runInterval(cb, ticks)`：`clearRun` まで N ティックごとに繰り返し。
 - `runJob(generator)`：長時間実行される処理。反復処理を小さく保つ。
 

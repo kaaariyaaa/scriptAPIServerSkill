@@ -45,6 +45,7 @@ system.runInterval(() => {
     }
   }
 });
+```
 
 ## Permission modes
 
@@ -158,7 +159,7 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
 ## system.run variants
 
 - `run`: next tick.
-- `runTimeout(cb, ticks)`: delay N ticks. `0` can loop infinitely.
+- `runTimeout(cb, ticks)`: delay N ticks. `0` can cause tight loops if misused.
 - `runInterval(cb, ticks)`: repeat every N ticks until `clearRun`.
 - `runJob(generator)`: long-running work. Keep iterations small.
 
