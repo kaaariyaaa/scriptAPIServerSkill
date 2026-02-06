@@ -55,6 +55,25 @@ system.runInterval(() => {
 - シミュレーション/イベント/ティック開始前。ワールドの変更不可。
 - 修正：`system.run`/`runTimeout`/`runJob` に遅延。
 
+### ドキュメント検証
+- メソッド/プロパティを使用する際は、常に Microsoft Learn で読み取り専用セーフまたは早期実行セーフかを確認してください。
+- API リファレンスの明示的な注意書き（read-only / early-execution）を確認し、厳密に従ってください。
+- アロー関数コールバックのみの場合、以下のような制限実行（restricted-execution）の注意書きも確認してください：
+  - "This closure is called with restricted-execution privilege."
+  - "This function can't be called in restricted-execution mode."
+- 制限実行の注意書きが適用される場合、アロー関数の本体に読み取り専用または早期実行の違反がないかを確認し、必要に応じて `system.run` で遅延してください。
+
+例（読み取り専用の遅延）：
+
+```ts
+world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
+  const player = event.player;
+  system.run(() => {
+    player.runCommand("say ok");
+  });
+});
+```
+
 ### 早期実行
 - ワールドロード前。多くの API が利用不可。
 - 修正：`world.afterEvents.worldLoad` または `system.run` に遅延。

@@ -55,6 +55,25 @@ system.runInterval(() => {
 - Before simulation/events/tick start. No world mutations.
 - Fix: defer to `system.run`/`runTimeout`/`runJob`.
 
+### Doc verification
+- When using any method/property, always check Microsoft Learn to confirm whether it is read-only safe or early-execution safe.
+- Look for explicit notes in the API reference (read-only / early-execution) and follow them strictly.
+- For arrow-function callbacks only, also check for restricted-execution notes like:
+  - "This closure is called with restricted-execution privilege."
+  - "This function can't be called in restricted-execution mode."
+- If a restricted-execution note applies, review the arrow-function body to ensure no read-only or early-execution violations; defer with `system.run` if needed.
+
+Example (read-only deferral):
+
+```ts
+world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
+  const player = event.player;
+  system.run(() => {
+    player.runCommand("say ok");
+  });
+});
+```
+
 ### Early-execution
 - Before world loads. Many APIs unavailable.
 - Fix: defer to `world.afterEvents.worldLoad` or `system.run`.
