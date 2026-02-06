@@ -10,6 +10,8 @@ description: Guidance for working with the Minecraft Bedrock Script API @minecra
 1. **Scope**: Identify task (events, entities, components, commands, timing). Default to latest stable version unless beta/preview requested.
 2. **Docs**: Navigate from module index to specific class/interface/event. Use Microsoft Learn as source of truth. Search via MCP when details missing.
 3. **Output**: Quote exact API names. Provide minimal working example with required imports. Verify no official equivalent exists before creating custom helpers.
+   - For enums like `CustomCommandParamType`, always check Microsoft Learn to confirm availability.
+   - `@minecraft/vanilla-data` is not on Microsoft Learn, so skip MCP searches for those enums.
 
 ## Common patterns
 

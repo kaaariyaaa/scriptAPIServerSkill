@@ -10,6 +10,8 @@ description: Minecraft Bedrock Script API の @minecraft/server モジュール�
 1. **スコープ**: タスクを特定（イベント、エンティティ、コンポーネント、コマンド、タイミング）。ベータ/プレビュー版の要求がない限り、最新の安定版をデフォルトとする。
 2. **ドキュメント**: モジュールインデックスから特定のクラス/インターフェース/イベントに移動。Microsoft Learn を真実の情報源（Source of Truth）として使用。詳細が不足している場合は MCP で検索。
 3. **出力**: 正確な API 名を引用。必要なインポートを含む最小限の動作例を提供。カスタムヘルパーを作成する前に、公式の同等物が存在しないことを確認。
+   - `CustomCommandParamType` のような列挙型については、利用可能かどうかを常に Microsoft Learn で確認してください。
+   - `@minecraft/vanilla-data` は Microsoft Learn に掲載されていないため、これらの列挙型については MCP 検索をスキップしてください。
 
 ## 一般的なパターン
 
