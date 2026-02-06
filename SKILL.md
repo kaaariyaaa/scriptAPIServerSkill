@@ -88,9 +88,22 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
 
 - Interface: `CustomCommand` (`name`, `description`, `permissionLevel`, `mandatoryParameters`, `optionalParameters`).
 - Parameters: `CustomCommandParameter` (`name`, `type`, optional `enumName`).
+- Param types and arrow-function argument types:
+  - `String` -> `String`
+  - `PlayerSelector` -> `Player`
+  - `Location` -> `Vector3`
+  - `ItemType` -> `ItemType`
+  - `Integer` -> `Number`
+  - `Float` -> `Number`
+  - `Enum` -> `String`
+  - `EntityType` -> `EntityType`
+  - `EntitySelector` -> `Entity`
+  - `Boolean` -> `Bool`
+  - `BlockType` -> `BlockType`
 - Register enums: `CustomCommandRegistry.registerEnum(name, values)`.
 - Register cmd: `CustomCommandRegistry.registerCommand(customCommand, callback)`.
 - Callback: `(origin, ...args) => CustomCommandResult`.
+- When using an arrow function, align parameter names and order with the `CustomCommandParameter.name` list; avoid mismatched names or generic `args` when parameters are defined.
 
 Example:
 

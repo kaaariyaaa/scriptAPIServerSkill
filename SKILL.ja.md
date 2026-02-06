@@ -88,9 +88,22 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
 
 - インターフェース：`CustomCommand`（`name`、`description`、`permissionLevel`、`mandatoryParameters`、`optionalParameters`）。
 - パラメータ：`CustomCommandParameter`（`name`、`type`、オプションで `enumName`）。
+- パラメータ型とアロー関数引数型の対応：
+  - `String` -> `String`
+  - `PlayerSelector` -> `Player`
+  - `Location` -> `Vector3`
+  - `ItemType` -> `ItemType`
+  - `Integer` -> `Number`
+  - `Float` -> `Number`
+  - `Enum` -> `String`
+  - `EntityType` -> `EntityType`
+  - `EntitySelector` -> `Entity`
+  - `Boolean` -> `Bool`
+  - `BlockType` -> `BlockType`
 - Enum 登録：`CustomCommandRegistry.registerEnum(name, values)`。
 - コマンド登録：`CustomCommandRegistry.registerCommand(customCommand, callback)`。
 - コールバック：`(origin, ...args) => CustomCommandResult`。
+- アロー関数を使用する際は、パラメータ名と順序を `CustomCommandParameter.name` リストに合わせてください。パラメータが定義されている場合、名前の不一致や汎用的な `args` の使用は避けてください。
 
 例：
 
