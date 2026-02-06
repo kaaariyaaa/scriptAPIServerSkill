@@ -19,7 +19,7 @@ description: Minecraft Bedrock Script API の @minecraft/server モジュール�
 - `world`/`system` イベントの subscribe/unsubscribe。パフォーマンスのためガードロジックを実装。
 
 ### ディメンション
-- `world.getDimension(MinecraftDimensionTypes.Overworld)` を使用するか、明示的にターゲットを指定。
+- `world.getDimension(MinecraftDimensionTypes.<Dimension>)` を使用し、タスクに適したディメンションを選択してください。
 
 ### コンポーネント
 - アクセス前に存在を確認。

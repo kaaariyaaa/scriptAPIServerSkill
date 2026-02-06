@@ -19,7 +19,7 @@ description: Guidance for working with the Minecraft Bedrock Script API @minecra
 - Subscribe/unsubscribe on `world`/`system` events. Guard logic for performance.
 
 ### Dimensions
-- Use `world.getDimension(MinecraftDimensionTypes.Overworld)` or target explicitly.
+- Use `world.getDimension(MinecraftDimensionTypes.<Dimension>)` and pick the appropriate dimension for the task.
 
 ### Components
 - Check existence before access.
